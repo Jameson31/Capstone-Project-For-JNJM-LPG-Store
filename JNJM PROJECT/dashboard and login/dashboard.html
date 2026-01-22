@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JNJM Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      min-height: 100vh;
+      background-color: #f5f6fa;
+    }
+
+    .sidebar {
+  position: fixed;
+  width: 85px;
+  height: 100vh;
+  background: #0a3756;
+  transition: width 0.3s;
+  overflow: hidden;
+}
+
+.sidebar:hover {
+  width: 270px;
+}
+
+.sidebar .logo {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar .nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .nav-list li {
+  width: 100%;
+}
+
+.sidebar .nav-list li a {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.sidebar .nav-list li a:hover, .nav-list a.active {
+  background: #f97316;
+}
+
+.icon {
+  min-width: 60px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.text {
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.sidebar:hover .text {
+  opacity: 1;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 10px;
+  width: 75%;
+  text-align: center;
+  color: white;
+}
+
+    .main-content {
+      margin-left: 250px;
+      flex: 1;
+      padding: 2rem;
+    }
+
+    .dashboard-header {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1.2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .card h4 {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 0.5rem;
+    }
+
+    .card .value {
+      font-size: 1.6rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card .value.blue { color: #007bff; }
+    .card .value.green { color: #28a745; }
+    .card .value.purple { color: #6f42c1; }
+    .card .value.black { color: #222; }
+
+    .activity-log {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .activity-log h3 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .activity-log p {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    #logoo {
+      width: 200px;
+    }
+
+    #logouts:hover {
+      background-color: grey;
+      
+    }
+
+    #logouts {
+      color: whitesmoke;
+    }
+
+    #logouts:link {
+       text-decoration: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+      .main-content {
+        margin: 0;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="sidebar">
+  <div class="logo">
+    <img src="D:\JNJM PROJECT\LOGO.png" alt="Logo" id="logoo"/>
+  </div>
+  <ul class="nav-list">
+    <li><a href="#" class="active"><i class="icon">🏠</i><span class="text">Dashboard</span></a></li>
+    <li><a href="D:\JNJM PROJECT\salesreport.html"><i class="icon">📊</i><span class="text">Sales Report</span></a></li>
+    <li><a href="D:\JNJM PROJECT\deliverystatus.html"><i class="icon">🚚</i><span class="text">Delivery Status</span></a></li>
+    <li><a href="D:\JNJM PROJECT\deliveryhistory.html"><i class="icon">📦</i><span class="text">Delivery History</span></a></li>
+    <li><a href="D:\JNJM PROJECT\accountmanagementactive.html"><i class="icon">👤</i><span class="text">Account Management</span></a></li>
+    <li><a href="D:\JNJM PROJECT\pricingmanagement.html"><i class="icon">💰</i><span class="text">Pricing Management</span></a></li>
+    <li><a href="D:\JNJM PROJECT\activitylog.html"><i class="icon">📝</i><span class="text">Activity Log</span></a></li>
+  </ul>
+  <div class="bottom">
+    <span class="text">ADMIN</span>
+    <a href="login.html"><i class="icon">🚪</i><span class="text">Log out</span></a>
+  </div>
+</div>
+
+
+  <div class="main-content">
+    <div class="dashboard-header">Dashboard</div>
+    <div class="card-grid">
+      <div class="card">
+        <h4>Total Sales (Today)</h4>
+        <div class="value blue">
+          ₱ 6,900.00
+        </div>
+      </div>
+      <div class="card">
+        <h4>Active Deliveries</h4>
+        <div class="value green">
+          7
+        </div>
+      </div>
+      <div class="card">
+        <h4>Number of Riders</h4>
+        <div class="value purple">
+          12
+        </div>
+      </div>
+      <div class="card">
+        <h4>Recent Activity</h4>
+        <div class="value black">
+          5 new entries
+        </div>
+      </div>
+    </div>
+
+    <div class="activity-log">
+      <h3>Recent Activity Log</h3>
+      <p>[2024-05-26 14:30] Admin updated price for 11kg tank.</p>
+      <p>[2024-05-26 14:15] Rider Juan Dela Cruz marked delivery #00123 as completed.</p>
+      <p>[2024-05-26 13:50] New sale processed (POS) for Customer Maria Santos.</p>
+      <p>[2024-05-26 13:20] Delivery #00124 assigned to Rider Pedro Reyes.</p>
+      <p>[2024-05-26 13:00] User Admin logged in.</p>
+    </div>
+  </div>
+</body>
+</html>

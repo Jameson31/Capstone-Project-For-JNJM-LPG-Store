@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Point of Sales</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      margin: 0;
+      display: flex;
+      height: 100vh;
+    }
+    aside {
+      width: 250px;
+      background-color: #1f2a37;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+    aside h2 {
+      color: orange;
+    }
+    aside nav a {
+      display: block;
+      color: white;
+      margin: 10px 0;
+      text-decoration: none;
+    }
+    main {
+      flex: 1;
+      background-color: #f9f9f9;
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .products {
+      flex: 1;
+      margin-right: 20px;
+    }
+    .products h1 {
+      margin-bottom: 20px;
+    }
+    .product-list {
+      display: flex;
+      gap: 20px;
+    }
+    .product {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .product button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .cart {
+      width: 350px;
+    }
+    .cart-panel {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: none;
+    }
+    .cart-panel.active {
+      display: block;
+    }
+    .transaction-type {
+      margin-bottom: 20px;
+    }
+    .transaction-type label {
+      margin-right: 10px;
+    }
+    .cart-panel input, .cart-panel select {
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .cart-panel .complete {
+      background-color: #3b82f6;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <aside>
+    <h2>JNJM LPG STORE</h2>
+    <nav>
+      <a href="#">Dashboard</a>
+      <a href="#">Delivery Management</a>
+      <a href="#">Delivery History</a>
+      <a href="#">Point of Sales (POS)</a>
+    </nav>
+    <div style="margin-top:auto;">
+      <p>CASHIER</p>
+      <a href="#">Log out</a>
+    </div>
+  </aside>
+
+  <main>
+    <div class="products">
+      <h1>Point of Sales</h1>
+      <input type="text" placeholder="Search Products...." style="padding: 10px; width: 300px; margin-bottom: 20px;">
+      <div class="product-list">
+        <div class="product">
+          <h3>11kg Gasul</h3>
+          <p>₱720.00</p>
+          <button>+ Add</button>
+        </div>
+        <div class="product">
+          <h3>5k Petron Gasul</h3>
+          <p>₱720.00</p>
+          <button>+ Add</button>
+        </div>
+        <div class="product">
+          <h3>2.7k Solane</h3>
+          <p>₱720.00</p>
+          <button>+ Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart">
+      <div class="transaction-type">
+        <label><input type="radio" name="type" value="walkin" checked> Walk-in</label>
+        <label><input type="radio" name="type" value="delivery"> Delivery</label>
+      </div>
+
+      <div id="walkin-panel" class="cart-panel active">
+        <h3>Shopping Cart</h3>
+        <p>Transaction Type: Walk-in</p>
+        <p><strong>Total Amount:</strong> ₰1,720.00</p>
+        <input type="text" placeholder="Customer Name (Optional)">
+        <select>
+          <option>Cash</option>
+          <option>GCash</option>
+        </select>
+        <input type="number" placeholder="Cash Tendered">
+        <p><strong>Change Due:</strong> ₰0.00</p>
+        <button class="complete">Complete Sale</button>
+      </div>
+
+      <div id="delivery-panel" class="cart-panel">
+        <h3>Shopping Cart</h3>
+        <p>Transaction Type: Delivery</p>
+        <p><strong>Total Amount:</strong> ₰1,720.00</p>
+        <input type="text" placeholder="Customer Name">
+        <input type="text" placeholder="Address">
+        <input type="text" placeholder="Contact No.">
+        <select>
+          <option>Cash</option>
+          <option>GCash</option>
+        </select>
+        <input type="number" placeholder="Cash Tendered">
+        <p><strong>Change Due:</strong> ₰0.00</p>
+        <button class="complete">Complete Sale</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const walkinPanel = document.getElementById('walkin-panel');
+    const deliveryPanel = document.getElementById('delivery-panel');
+    const radios = document.getElementsByName('type');
+
+    radios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        if (radio.value === 'walkin') {
+          walkinPanel.classList.add('active');
+          deliveryPanel.classList.remove('active');
+        } else {
+          walkinPanel.classList.remove('active');
+          deliveryPanel.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

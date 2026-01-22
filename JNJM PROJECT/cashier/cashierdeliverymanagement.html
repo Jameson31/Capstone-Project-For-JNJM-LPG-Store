@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery Management - Cashier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
+    body { display: flex; height: 100vh; background: #f4f4f4; }
+
+#logoo {
+      width: 200px;
+    }
+
+     .sidebar {
+  position: fixed;
+  width: 85px;
+  height: 100vh;
+  background: #0a3756;
+  transition: width 0.3s;
+  overflow: hidden;
+}
+
+.active:hover {
+  background: grey;
+}
+
+.sidebar:hover {
+  width: 270px;
+}
+
+.sidebar .logo {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar .nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .nav-list li {
+  width: 100%;
+}
+
+.sidebar .nav-list li a {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.sidebar .nav-list li a:hover, .nav-list a.active {
+  background: #f97316;
+}
+
+.icon {
+  min-width: 60px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.text {
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.sidebar:hover .text {
+  opacity: 1;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 10px;
+  width: 75%;
+  text-align: center;
+  color: white;
+}
+    .main {
+      margin-left: 250px;
+      flex: 1;
+      padding: 2rem;
+    }
+
+    .main h1 { font-size: 28px; margin-bottom: 20px; }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .filters button {
+      padding: 8px 18px;
+      border: none;
+      border-radius: 6px;
+      background: #e5e7eb;
+      cursor: pointer;
+    }
+
+    .filters button.active {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .search-box {
+      float: right;
+      margin-top: -38px;
+    }
+
+    .search-box input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 250px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 14px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+
+    th { background: #f9fafb; font-weight: 600; color: #555; }
+
+    .status {
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .Pending { background: #fef3c7; color: #92400e; }
+    .Accepted { background: #fcd34d; color: #78350f; }
+    .InTransit { background: #dbeafe; color: #1d4ed8; }
+    .Delivered { background: #bbf7d0; color: #166534; }
+
+    .actions button {
+      padding: 6px 12px;
+      margin-right: 6px;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .cancel { background: #ef4444; }
+    .complete { background: #3b82f6; }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+  <div class="logo">
+    <img src="D:\JNJM PROJECT\LOGO.png" alt="Logo" id="logoo"/>
+  </div>
+  <ul class="nav-list">
+    <li><a href="D:\JNJM PROJECT\dashboard and login\cashierdashboard.html"><i class="icon">🏠</i><span class="text">Dashboard</span></a></li>
+    <li><a href="#" class="active"><i class="icon">➕</i><span class="text">Delivery Management</span></a></li>
+    <li><a href="cashierdeliveryhistory.html"><i class="icon">🔖</i><span class="text">Sales Delivery History</span></a></li>
+    <li><a href="#"><i class="icon">🧾</i><span class="text">Point of Sales(POS)</span></a></li>
+  </ul>
+  <div class="bottom">
+    <span class="text">ADMIN</span>
+    <a href="D:\JNJM PROJECT\dashboard and login\login.html"><i class="icon">🚪</i><span class="text">Log out</span></a>
+  </div>
+</div>
+
+  <div class="main">
+    <h1>Delivery Management</h1>
+    <div class="filters">
+      <button class="active">All</button>
+      <button>Pending</button>
+      <button>Accepted</button>
+      <button>In Transit</button>
+      <button>Delivered</button>
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Search by Customer Name/ID">
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>DELIVERY ID</th>
+          <th>CUSTOMER NAME</th>
+          <th>ADDRESS</th>
+          <th>CONTACT NO.</th>
+          <th>LPG ITEM(S)</th>
+          <th>QTY</th>
+          <th>AMOUNT</th>
+          <th>STATUS</th>
+          <th>ASSIGNED RIDER</th>
+          <th>ACTIONS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#00125</td>
+          <td>John Doe</td>
+          <td>123 Maint St, Anytown</td>
+          <td>#0962782425</td>
+          <td>11kg Gasul</td>
+          <td>1</td>
+          <td>₱720.00</td>
+          <td><span class="status Pending">Pending</span></td>
+          <td>Not Assign</td>
+          <td class="actions">
+            <button class="cancel">Cancelled</button>
+            <button class="complete">Complete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>#00124</td>
+          <td>Allan Mata</td>
+          <td>135 Maint St, Anytown</td>
+          <td>#0962782425</td>
+          <td>5kg Petron Gasul</td>
+          <td>2</td>
+          <td>₱1440.00</td>
+          <td><span class="status InTransit">In Transit</span></td>
+          <td>Robert Reyes</td>
+          <td class="actions">
+            <button class="cancel">Cancelled</button>
+            <button class="complete">Complete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>#00122</td>
+          <td>Paul John</td>
+          <td>169 Maint St, Anytown</td>
+          <td>#0962782425</td>
+          <td>5kg Petron Gasul</td>
+          <td>2</td>
+          <td>₱1440.00</td>
+          <td><span class="status Accepted">Accepted</span></td>
+          <td>Juan Cruz</td>
+          <td class="actions">
+            <button class="cancel">Cancelled</button>
+            <button class="complete">Complete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>#00123</td>
+          <td>Mark Francis</td>
+          <td>189 Maint St, Anytown</td>
+          <td>#0962782425</td>
+          <td>5kg Petron Gasul</td>
+          <td>2</td>
+          <td>₱1440.00</td>
+          <td><span class="status Delivered">Delivered</span></td>
+          <td>Juan Cruz</td>
+          <td class="actions">
+            <button class="cancel">Cancelled</button>
+            <button class="complete">Complete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
